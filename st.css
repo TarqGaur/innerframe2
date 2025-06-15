@@ -1703,7 +1703,7 @@ canvas {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(30, 30, 30, 0.7); 
+    background: rgba(30, 30, 30, 0.7);
     border: 2px solid rgba(10, 10, 10, 0.8);
 
     cursor: pointer;
@@ -1874,8 +1874,10 @@ canvas {
 @media screen and (max-width: 667px) {
     .head {
         font-size: 60px;
-        letter-spacing: 2px;
+        /* letter-spacing: 2px; */
         text-transform: uppercase;
+        font-family: "roboto";
+        font-weight: bold;
         width: 100vw;
         margin: auto;
     }
@@ -1899,9 +1901,12 @@ canvas {
 
     .l,
     .r {
-        max-height: 40vh;
+        /* max-height: 40vh; */
         height: auto;
 
+    }
+    .left-right-container{
+                transform: scale(0.8);
 
     }
 
