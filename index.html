@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime.js Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/MTLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+
+
+    <link rel="stylesheet" href="st.css">
+    <title>The Frame Hunt 2025</title>
+    <link rel="icon" href="logo.jpeg">
+
+    <!-- FOnts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&family=Sevillana&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <canvas id="bg"></canvas>
+   
+ <nav class="dot-nav">
+        <div class="progress-line">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="dot active" data-target="1">
+            <div class="dot-label">Home</div>
+        </div>
+        <div class="dot" data-target="2">
+            <div class="dot-label">Theme</div>
+        </div>
+        <div class="dot" data-target="3">
+            <div class="dot-label">Categories</div>
+        </div>
+        <div class="dot" data-target="4">
+            <div class="dot-label">Timeline</div>
+        </div>
+        <div class="dot" data-target="5">
+            <div class="dot-label">Prizes</div>
+        </div>
+        <div class="dot" data-target="6">
+            <div class="dot-label">Social</div>
+        </div>
+    </nav>
+    <div class="particle-overlay" id="particleOverlay"></div>
+    <!-- <div class="spring-leaf leaf-1"></div>
+    <div class="spring-leaf leaf-2"></div>
+    <div class="spring-leaf leaf-3"></div>
+    <div class="spring-leaf leaf-4"></div> -->
+    <div class="scroll-container" id="scrollContainer">
+        <section class="panel" data-section="1" style="background: hsla(5, 100%, 69%, 0.1);">
+            <div class="s1">
+                <h1 class="head subtle-box reveal fade-up delay-1 ">The Frame Hunt</h1>
+                <h2 class="head2 reveal fade-up delay-2">2025</h2>
+                <div class="countdown-timer ">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <label>Minutes</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <label>Seconds</label>
+                    </div>
+                </div>
+
+                <button class="register reveal fade-up delay-3" onclick="window.location.href='form.html'">Register
+                    Now</button>
+                <h2 class="head3 subtle-box reveal fade-up">Organised by innerframe</h2>
+
+            </div>
+        </section>
+        <section class="panel" data-section="2" style="background: hsla(257, 24%, 47%, 0.1);">
+            <div class="s2">
+                <h1 class="theme subtle-box  reveal fade-left">Theme</h1>
+                <h2 class="thdet reveal fade-right delay-1">Our vision is to build a community that fosters hands-on
+                    learning and creative
+                    exploration through photography and filmmaking, The Frame Hunt is designed to give people the
+                    opportunity to discover photography and short filmmaking techniques. it's a chance to learn, to
+                    share, and most importontly, to grow as visual storytellers. Our goal is to empower participants
+                    with knowledge that will improve their skills.</h2>
+            </div>
+        </section>
+        <section class="panel" data-section="3" style="background: hsla(43, 37%, 74%, 0.1)">
+            <div class="s3">
+                <div class="left-right-container">
+                    <div class="left reveal-skew-left">
+                        <div class="l">
+                            <div class="cat1 pop-in">The Unnoticed</div>
+                            <div class="cdes1">Capture the essence of the theme, allowing photographers to find beauty
+                                in
+                                the overlooked details—small objects, textures, or hidden corners of daily life.
+                                Transform the mundane into something magical.</div>
+                            <div class="cat1" style="font-size: 20px; margin-left: 50%;">- Mobile Category</div>
+                        </div>
+                    </div>
+                    <div class="right reveal-skew-right">
+                        <div class="r">
+                            <div class="cat2 pop-in">The Rhythm Of Daily Life</div>
+                            <div class="cdes2">Focus on the art of capturing natural, real-life moments from everyday routines, movement, and emmtions that tell genuine stories about life's flow. Neither posed nor staged, just pure documentary photography that showcases patterns and silent emotional narratives.</div>
+                            <div class="cat2" style="font-size: 20px; margin-left: 50%;">- DSLR Category</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="panel s4" data-section="4" style="background: hsla(32, 93%, 54%, 0.1);">
+            <div class="container2">
+                <div class="timeline-header">
+                    <h1>Event Timeline</h1>
+                    <p>Key dates and milestones for our upcoming event</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item ">
+                        <div class="timeline-content reveal fade-up delay-1">
+                            <h3 class="event-title">Launch</h3>
+                            <div class="event-date">15 June 2025</div>
+                            <div class="event-description">
+                                Official launch of the event. Registration opens and participants can begin submitting
+                                their entries.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item ">
+                        <div class="timeline-content reveal fade-up delay-2">
+                            <h3 class="event-title">Last Submission Date</h3>
+                            <div class="event-date">30 June 2025</div>
+                            <div class="event-description">
+                                Final deadline for all submissions. No entries will be accepted after this date. Make
+                                sure to submit your work before midnight.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content reveal fade-up delay-2">
+                            <h3 class="event-title">Evaluation Period</h3>
+                            <div class="event-date">30 June - 10 July 2025</div>
+                            <div class="event-description">
+                                Our expert panel will review and evaluate all submissions during this period.
+                                Participants will be notified of any updates.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content reveal fade-up delay-1">
+                            <h3 class="event-title">Results Announcement</h3>
+                            <div class="event-date">10 July 2025</div>
+                            <div class="event-description">
+                                Winners will be announced and results published. Congratulations to all participants for
+                                their outstanding contributions!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="panel s5" data-section="5" style="background: hsla(32, 55%, 35%, 0.1);">
+            <section class="prizes-section">
+                <div class="section-header">
+                    <h1 class="section-title">Competition Prizes</h1>
+                    <p class="section-subtitle">Celebrating creativity and vision</p>
+                </div>
+
+                <div class="categories-container">
+                    <div class="category">
+                        <h2 class="category-title">The Unnoticed</h2>
+                        <div class="prizes-list">
+                            <div class="prize-item first ">
+                                <span class="prize-position">🥇 1st Prize</span>
+                                <span class="prize-amount">₹1000</span>
+                            </div>
+                            <div class="prize-item second reveal fade-up delay-1">
+                                <span class="prize-position">🥈 2nd Prize</span>
+                                <span class="prize-amount">₹750</span>
+                            </div>
+                            <div class="prize-item third reveal fade-up delay-2">
+                                <span class="prize-position">🥉 3rd Prize</span>
+                                <span class="prize-amount">₹500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category">
+                        <h2 class="category-title">The Rhythm Of Daily Life</h2>
+                        <div class="prizes-list">
+                            <div class="prize-item first ">
+                                <span class="prize-position">🥇 1st Prize</span>
+                                <span class="prize-amount">₹1000</span>
+                            </div>
+                            <div class="prize-item second reveal fade-up delay-1">
+                                <span class="prize-position">🥈 2nd Prize</span>
+                                <span class="prize-amount">₹750</span>
+                            </div>
+                            <div class="prize-item third reveal fade-up delay-2">
+                                <span class="prize-position">🥉 3rd Prize</span>
+                                <span class="prize-amount">₹500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="panel s5" data-section="6" style="background: hsla(219, 41%, 70%, 0.1);">
+            <section class="social-section">
+                <div class="grid-background"></div>
+                <div class="floating-orbs">
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                </div>
+
+                <div class="section-container">
+                    <!-- <h2 class="section-title">Our Social</h2> -->
+
+                    <div class="social-container">
+                        <div class="social-card instagram reveal fade-left delay-1">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="Instagram_Icon_PNG-removebg-preview.png" style="height: 100px;">
+                            </div>
+                            <h3 class="social-title">Instagram</h3>
+                            <p class="social-description">Follow us for daily photography inspiration and
+                                behind-the-scenes content</p>
+                            <a href="https://www.instagram.com/innerframe_forge?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                class="social-link">
+                                Follow Us
+                                <span>→</span>
+                            </a>
+                        </div>
+
+                        <div class="social-card unstop reveal fade-up delay-2">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="unstop.jpg" style="height: 100px; border-radius: 20px;">
+
+                            </div>
+                            <h3 class="social-title">Unstop</h3>
+                            <p class="social-description">Join our community and participate in exciting photography
+                                competitions</p>
+                            <a href="#" class="social-link">
+                                Join Now
+                                <span>→</span>
+                            </a>
+                        </div>
+
+                        <div class="social-card brochure reveal fade-right delay-1">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="icons8-document.svg" style="height: 100px;">
+                            </div>
+                            <h3 class="social-title">Brochure</h3>
+                            <p class="social-description">Download our comprehensive guide to photography services and
+                                workshops</p>
+                            <a href="1.pdf" class="social-link" download>
+                                Download PDF
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+
+    </div>
+
+    <script>
+
+// Replace your existing JavaScript with this fixed version
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+camera.position.set(0, 0, 0);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+// Create separate groups for different objects
+const staticParticleGroup = new THREE.Group();
+const rotatingGroup = new THREE.Group();
+const cameraGroup = new THREE.Group();
+
+scene.add(staticParticleGroup);
+scene.add(rotatingGroup);
+scene.add(cameraGroup);
+
+// Enhanced lighting setup
+const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(-10, 10, 5);
+scene.add(directionalLight);
+
+let particleSystems = {};
+let cameraModel;
+
+// Initialize texture loader first
+const loader = new THREE.OBJLoader();
+const textureLoader = new THREE.TextureLoader();
+
+// Create multiple sophisticated particle systems
+function createEnhancedParticles() {
+    createSwirlingParticles();
+    // createFloatingOrbs();
+    createGlowingTrails();
+    createCosmicDust();
+    createEnergyRings();
+    createSpringLeafParticles();
+}
+
+function createSwirlingParticles() {
+    const particleCount = 2000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    const sizes = new Float32Array(particleCount);
+    const velocities = new Float32Array(particleCount * 3);
+
+    const colorPalette = [
+        new THREE.Color(0xBDB395),
+        new THREE.Color(0xA8C686),
+        new THREE.Color(0xE8E0D0),
+        new THREE.Color(0xD4C4A0),
+        new THREE.Color(0x87CEEB),
+        new THREE.Color(0xDDA0DD)
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3;
+
+        // Create spiral distribution
+        const radius = Math.random() * 15 + 5; // Reduced radius to keep particles closer
+        const angle = (i / particleCount) * Math.PI * 8;
+        const height = (Math.random() - 0.5) * 20; // Reduced height range
+
+        positions[i3] = Math.cos(angle) * radius + (Math.random() - 0.5) * 3;
+        positions[i3 + 1] = height;
+        positions[i3 + 2] = Math.sin(angle) * radius + (Math.random() - 0.5) * 3;
+
+        // Random velocities for organic movement (reduced)
+        velocities[i3] = (Math.random() - 0.5) * 0.01;
+        velocities[i3 + 1] = (Math.random() - 0.5) * 0.005;
+        velocities[i3 + 2] = (Math.random() - 0.5) * 0.01;
+
+        // Assign colors
+        const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+        colors[i3] = color.r;
+        colors[i3 + 1] = color.g;
+        colors[i3 + 2] = color.b;
+
+        // Variable sizes
+        sizes[i] = Math.random() * 0.8 + 0.2;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    // Create custom shader material for enhanced effects
+    const vertexShader = `
+        attribute float size;
+        attribute vec3 color;
+        varying vec3 vColor;
+        varying float vOpacity;
+        
+        void main() {
+            vColor = color;
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+            
+            // Distance-based opacity
+            float distance = length(mvPosition.xyz);
+            vOpacity = 1.0 - smoothstep(10.0, 30.0, distance);
+            
+            gl_PointSize = size * (300.0 / -mvPosition.z);
+            gl_Position = projectionMatrix * mvPosition;
+        }
+    `;
+
+    const fragmentShader = `
+        varying vec3 vColor;
+        varying float vOpacity;
+        
+        void main() {
+            float distanceToCenter = distance(gl_PointCoord, vec2(0.5, 0.5));
+            float alpha = 1.0 - smoothstep(0.3, 0.5, distanceToCenter);
+            
+            // Add glow effect
+            float glow = 1.0 - smoothstep(0.0, 0.4, distanceToCenter);
+            vec3 finalColor = vColor + vec3(0.3) * glow;
+            
+            gl_FragColor = vec4(finalColor, alpha * vOpacity * 0.8);
+        }
+    `;
+
+    const material = new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        vertexColors: true
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    particles.name = "swirlingParticles";
+    particles.userData = { 
+        velocities,
+        initialPositions: positions.slice() // Store initial positions for reset
+    };
+    
+    // Add to static particle group instead of scene
+    staticParticleGroup.add(particles);
+    particleSystems.swirling = particles;
+}
+
+function createFloatingOrbs() {
+    const orbCount = 100;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(orbCount * 3);
+    const colors = new Float32Array(orbCount * 3);
+    const sizes = new Float32Array(orbCount);
+
+    for (let i = 0; i < orbCount; i++) {
+        const i3 = i * 3;
+
+        positions[i3] = (Math.random() - 0.5) * 30; // Reduced range
+        positions[i3 + 1] = (Math.random() - 0.5) * 25;
+        positions[i3 + 2] = (Math.random() - 0.5) * 30;
+
+        // Soft, ethereal colors
+        const hue = Math.random() * 0.3 + 0.15;
+        const color = new THREE.Color().setHSL(hue, 0.6, 0.7);
+        colors[i3] = color.r;
+        colors[i3 + 1] = color.g;
+        colors[i3 + 2] = color.b;
+
+        sizes[i] = Math.random() * 2 + 1;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    const material = new THREE.PointsMaterial({
+        size: 1.5,
+        transparent: true,
+        opacity: 0.6, // Increased opacity
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        sizeAttenuation: true,
+        vertexColors: true
+    });
+
+    const orbs = new THREE.Points(geometry, material);
+    orbs.name = "floatingOrbs";
+    orbs.userData = { initialPositions: positions.slice() };
+    
+    staticParticleGroup.add(orbs);
+    particleSystems.orbs = orbs;
+}
+
+function createGlowingTrails() {
+    const trailCount = 50;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(trailCount * 3);
+    const colors = new Float32Array(trailCount * 3);
+
+    for (let i = 0; i < trailCount; i++) {
+        const i3 = i * 3;
+
+        // Create curved paths (smaller radius)
+        const t = i / trailCount;
+        const radius = 10 + Math.sin(t * Math.PI * 4) * 3; // Reduced radius
+        const angle = t * Math.PI * 6;
+
+        positions[i3] = Math.cos(angle) * radius;
+        positions[i3 + 1] = Math.sin(t * Math.PI * 2) * 8; // Reduced height
+        positions[i3 + 2] = Math.sin(angle) * radius;
+
+        // Bright trail colors
+        const intensity = 1 - t * 0.7;
+        colors[i3] = 0.9 * intensity;
+        colors[i3 + 1] = 0.7 * intensity;
+        colors[i3 + 2] = 1.0 * intensity;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.LineBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.8, // Increased opacity
+        blending: THREE.AdditiveBlending,
+        vertexColors: true
+    });
+
+    const trails = new THREE.Line(geometry, material);
+    trails.name = "glowingTrails";
+    
+    staticParticleGroup.add(trails);
+    particleSystems.trails = trails;
+}
+
+function createCosmicDust() {
+    const dustCount = 2000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(dustCount * 3);
+    const colors = new Float32Array(dustCount * 3);
+    const sizes = new Float32Array(dustCount);
+
+    for (let i = 0; i < dustCount; i++) {
+        const i3 = i * 3;
+
+        // Scattered throughout space (reduced range)
+        positions[i3] = (Math.random() - 0.5) * 40;
+        positions[i3 + 1] = (Math.random() - 0.5) * 30;
+        positions[i3 + 2] = (Math.random() - 0.5) * 40;
+
+        // Subtle colors
+        const brightness = Math.random() * 0.4 + 0.2; // Increased brightness
+        colors[i3] = brightness;
+        colors[i3 + 1] = brightness * 0.9;
+        colors[i3 + 2] = brightness * 0.8;
+
+        sizes[i] = Math.random() * 0.4 + 0.2; // Increased size
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    const material = new THREE.PointsMaterial({
+        size: 0.3,
+        transparent: true,
+        opacity: 0.5, // Increased opacity
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        sizeAttenuation: true,
+        vertexColors: true
+    });
+
+    const dust = new THREE.Points(geometry, material);
+    dust.name = "cosmicDust";
+    
+    staticParticleGroup.add(dust);
+    particleSystems.dust = dust;
+}
+
+function createEnergyRings() {
+    const ringGeometry = new THREE.RingGeometry(8, 12, 32);
+    const ringMaterial = new THREE.MeshBasicMaterial({
+        color: 0xBDB395,
+        transparent: true,
+        opacity: 0.15, // Increased opacity
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending
+    });
+
+    // Create multiple rings at different angles
+    const rings = new THREE.Group();
+    for (let i = 0; i < 3; i++) {
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial.clone());
+        ring.rotation.x = (i * Math.PI) / 3;
+        ring.rotation.y = (i * Math.PI) / 4;
+        ring.material.opacity = 0.1 + i * 0.05; // Increased opacity
+        rings.add(ring);
+    }
+
+    rings.name = "energyRings";
+    staticParticleGroup.add(rings);
+    particleSystems.rings = rings;
+}
+
+function createSpringLeafParticles() {
+    const leafCount = 6;
+    const leaves = [];
+
+    const loader = new THREE.TextureLoader();
+    loader.load('leaf.png', function (leafTexture) {
+        for (let i = 0; i < leafCount; i++) {
+            const leafMaterial = new THREE.MeshBasicMaterial({
+                map: leafTexture,
+                transparent: true,
+                side: THREE.DoubleSide,
+                depthWrite: false
+            });
+
+            const leafGeometry = new THREE.PlaneGeometry(2, 2);
+            const leaf = new THREE.Mesh(leafGeometry, leafMaterial);
+
+            // Random initial positioning (reduced range)
+            leaf.position.set(
+                (Math.random() - 0.5) * 25,
+                20 + Math.random() * 10,
+                (Math.random() - 0.5) * 25
+            );
+
+            leaf.rotation.set(
+                (Math.random() - 0.5) * 0.3,
+                Math.random() * Math.PI * 2,
+                (Math.random() - 0.5) * 0.2
+            );
+
+            const scale = 0.6 + Math.random() * 0.4;
+            leaf.scale.set(scale, scale, scale);
+
+            leaf.userData = {
+                fallSpeed: 0.015 + Math.random() * 0.02,
+                wobbleSpeed: 0.3 + Math.random() * 0.4,
+                wobbleAmplitude: 0.15 + Math.random() * 0.2,
+                rotationSpeed: {
+                    x: (Math.random() - 0.5) * 0.005,
+                    y: (Math.random() - 0.5) * 0.008,
+                    z: (Math.random() - 0.5) * 0.003
+                },
+                initialPosition: leaf.position.clone(),
+                phase: Math.random() * Math.PI * 2
+            };
+
+            staticParticleGroup.add(leaf);
+            leaves.push(leaf);
+        }
+
+        particleSystems.springLeaves = leaves;
+    });
+}
+
+createEnhancedParticles();
+
+// Enhanced camera model loading
+const bodyMaterial = new THREE.MeshStandardMaterial({
+    map: textureLoader.load('textures/cameraBody_Mat_baseColor.png'),
+    roughnessMap: textureLoader.load('textures/cameraBody_Mat_roughness.png'),
+    metalnessMap: textureLoader.load('textures/cameraBody_Mat_metallic.png'),
+    normalMap: textureLoader.load('textures/cameraBody_Mat_normal.png'),
+    metalness: 1.0,
+    roughness: 1.0,
+});
+
+const lensMaterial = new THREE.MeshStandardMaterial({
+    map: textureLoader.load('textures/cameraLens_Mat_baseColor.png'),
+    roughnessMap: textureLoader.load('textures/cameraLens_Mat_roughness.png'),
+    metalnessMap: textureLoader.load('textures/cameraLens_Mat_metallic.png'),
+    transparent: true,
+    opacity: 0.5,
+    metalness: 1.0,
+});
+
+loader.load('camera.obj', function (object) {
+    cameraModel = object;
+    object.scale.set(0.2, 0.2, 0.2);
+    object.position.y = -1;
+
+    object.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+            const wireframe = new THREE.WireframeGeometry(child.geometry);
+            const line = new THREE.LineSegments(wireframe);
+            line.material.depthTest = true;
+            line.material.opacity = 0.25;
+            line.material.transparent = true;
+            line.material.color = new THREE.Color("#BDB395");
+            object.add(line);
+            child.visible = false;
+        }
+    });
+
+    // Add camera to rotating group instead of scene
+    rotatingGroup.add(object);
+});
+
+const scrollContainer = document.getElementById('scrollContainer');
+
+if (scrollContainer) {
+    scrollContainer.addEventListener('scroll', () => {
+        const scrollTop = scrollContainer.scrollTop;
+        const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        const t = scrollTop / scrollHeight;
+
+        // Enhanced camera movement
+        if (t < 0.3) {
+            camera.position.z = 2 + t * 5;
+            camera.position.y = t * 10.5;
+            camera.position.x = t * 10.2;
+            camera.lookAt(0, 0, 0);
+
+            // Gentle particle rotations
+            staticParticleGroup.rotation.y = t * 0.5;
+            staticParticleGroup.rotation.x = t * 0.3;
+        }
+
+        if (t >= 0.3 && t < 0.9) {
+            const rotateT = t - 0.3;
+            // Only rotate the rotating group (camera), not particles
+            rotatingGroup.rotation.y = rotateT * 3.5;
+            
+            // Keep particles rotating gently
+            staticParticleGroup.rotation.y = 0.15 + rotateT * 0.8;
+            staticParticleGroup.rotation.z = rotateT * 0.3;
+        }
+
+        if (t >= 0.9) {
+            const finalT = (t - 0.9) / 0.1;
+            const currentX = 10.2 * 0.3;
+            const currentY = 10.5 * 0.3;
+            const currentZ = 2 + 5 * 0.3;
+
+            camera.position.x = currentX * (1 - finalT);
+            camera.position.y = currentY + finalT * 8;
+            camera.position.z = currentZ + finalT * 6;
+            camera.lookAt(0, 0, 0);
+
+            const rotateT = 0.6;
+            rotatingGroup.rotation.y = rotateT * 3.5;
+            
+            // Final particle positions
+            staticParticleGroup.rotation.y = 0.15 + rotateT * 0.8;
+            staticParticleGroup.rotation.z = rotateT * 0.3;
+        }
+
+        // Spring leaf scroll effects
+        const leaves = document.querySelectorAll('.spring-leaf');
+        leaves.forEach((leaf, index) => {
+            const leafOffset = (index + 1) * 0.15;
+            const leafT = Math.max(0, Math.min(1, (t + leafOffset) * 1.2));
+
+            const translateY = Math.sin(leafT * Math.PI * 3) * 15;
+            const translateX = Math.cos(leafT * Math.PI * 2) * 10;
+            const rotate = leafT * 90 + Math.sin(leafT * Math.PI * 6) * 5;
+            const scale = 0.9 + Math.sin(leafT * Math.PI * 2) * 0.2;
+
+            leaf.style.transform = `translateY(${translateY}px) translateX(${translateX}px) rotate(${rotate}deg) scale(${scale})`;
+            leaf.style.opacity = 0.5 + Math.sin(leafT * Math.PI * 1.5) * 0.3;
+        });
+
+        // Animate 3D spring leaf particles based on scroll
+        if (particleSystems.springLeaves) {
+            particleSystems.springLeaves.forEach((leaf, index) => {
+                const leafScrollT = Math.max(0, Math.min(1, (t + index * 0.2) * 1.5));
+
+                const scrollWobble = Math.sin(leafScrollT * Math.PI * 4) * 2;
+                const scrollDrift = Math.cos(leafScrollT * Math.PI * 2) * 1.5;
+
+                leaf.position.x += scrollWobble * 0.05;
+                leaf.position.z += scrollDrift * 0.05;
+
+                leaf.rotation.y += leafScrollT * 0.01;
+                leaf.rotation.z += Math.sin(leafScrollT * Math.PI * 3) * 0.005;
+
+                leaf.material.opacity = 0.6 + Math.sin(leafScrollT * Math.PI * 2) * 0.3;
+            });
+        }
+    });
+}
+
+// Enhanced animation loop with bounds checking
+function animate() {
+    requestAnimationFrame(animate);
+
+    const time = Date.now() * 0.001;
+
+    // Animate swirling particles with bounds checking
+    if (particleSystems.swirling) {
+        const particles = particleSystems.swirling;
+        const positions = particles.geometry.attributes.position.array;
+        const velocities = particles.userData.velocities;
+        const maxDistance = 25; // Maximum distance from center
+
+        for (let i = 0; i < positions.length; i += 3) {
+            // Apply velocities
+            positions[i] += velocities[i];
+            positions[i + 1] += velocities[i + 1];
+            positions[i + 2] += velocities[i + 2];
+
+            // Add wave motion
+            positions[i] += Math.sin(time + i * 0.01) * 0.008;
+            positions[i + 1] += Math.cos(time + i * 0.02) * 0.004;
+            positions[i + 2] += Math.sin(time + i * 0.015) * 0.008;
+
+            // Check distance from center and reset if too far
+            const distance = Math.sqrt(positions[i]**2 + positions[i+1]**2 + positions[i+2]**2);
+            if (distance > maxDistance) {
+                // Reset to a position closer to center
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * 10 + 5;
+                positions[i] = Math.cos(angle) * radius;
+                positions[i + 1] = (Math.random() - 0.5) * 15;
+                positions[i + 2] = Math.sin(angle) * radius;
+                
+                // Reset velocity
+                velocities[i] = (Math.random() - 0.5) * 0.01;
+                velocities[i + 1] = (Math.random() - 0.5) * 0.005;
+                velocities[i + 2] = (Math.random() - 0.5) * 0.01;
+            }
+
+            // Boundary constraints
+            if (Math.abs(positions[i]) > 20) velocities[i] *= -0.5;
+            if (Math.abs(positions[i + 1]) > 15) velocities[i + 1] *= -0.5;
+            if (Math.abs(positions[i + 2]) > 20) velocities[i + 2] *= -0.5;
+        }
+
+        particles.geometry.attributes.position.needsUpdate = true;
+        particles.rotation.y += 0.001;
+        particles.rotation.x += 0.0005;
+    }
+
+    // Animate floating orbs with bounds checking
+    if (particleSystems.orbs) {
+        const orbs = particleSystems.orbs;
+        const positions = orbs.geometry.attributes.position.array;
+        
+        for (let i = 0; i < positions.length; i += 3) {
+            const distance = Math.sqrt(positions[i]**2 + positions[i+1]**2 + positions[i+2]**2);
+            if (distance > 30) {
+                positions[i] = (Math.random() - 0.5) * 20;
+                positions[i + 1] = (Math.random() - 0.5) * 15;
+                positions[i + 2] = (Math.random() - 0.5) * 20;
+            }
+        }
+        
+        orbs.geometry.attributes.position.needsUpdate = true;
+        orbs.rotation.y += 0.002;
+        orbs.rotation.z += 0.0008;
+
+        const scale = 1 + Math.sin(time * 0.5) * 0.05;
+        orbs.scale.setScalar(scale);
+    }
+
+    // Animate glowing trails
+    if (particleSystems.trails) {
+        particleSystems.trails.rotation.y += 0.005;
+        particleSystems.trails.rotation.x += 0.002;
+    }
+
+    // Animate cosmic dust with gentle movement
+    if (particleSystems.dust) {
+        const dust = particleSystems.dust;
+        const positions = dust.geometry.attributes.position.array;
+        
+        for (let i = 0; i < positions.length; i += 3) {
+            // Gentle floating motion
+            positions[i] += Math.sin(time * 0.2 + i * 0.01) * 0.002;
+            positions[i + 1] += Math.cos(time * 0.15 + i * 0.008) * 0.001;
+            positions[i + 2] += Math.sin(time * 0.18 + i * 0.012) * 0.002;
+            
+            // Reset if too far
+            const distance = Math.sqrt(positions[i]**2 + positions[i+1]**2 + positions[i+2]**2);
+            if (distance > 35) {
+                positions[i] = (Math.random() - 0.5) * 25;
+                positions[i + 1] = (Math.random() - 0.5) * 20;
+                positions[i + 2] = (Math.random() - 0.5) * 25;
+            }
+        }
+        
+        dust.geometry.attributes.position.needsUpdate = true;
+        dust.rotation.y -= 0.0003;
+        dust.rotation.x += 0.0002;
+    }
+
+    // Animate energy rings
+    if (particleSystems.rings) {
+        particleSystems.rings.children.forEach((ring, index) => {
+            ring.rotation.z += 0.008 * (index + 1);
+            ring.material.opacity = 0.1 + Math.sin(time + index) * 0.05;
+        });
+    }
+
+    // Animate spring leaf particles
+    if (particleSystems.springLeaves) {
+        particleSystems.springLeaves.forEach((leaf, index) => {
+            const userData = leaf.userData;
+
+            leaf.position.y -= userData.fallSpeed;
+
+            const wobbleX = Math.sin(time * userData.wobbleSpeed + userData.phase) * userData.wobbleAmplitude;
+            const wobbleZ = Math.cos(time * userData.wobbleSpeed * 0.6 + userData.phase) * userData.wobbleAmplitude * 0.6;
+
+            leaf.position.x = userData.initialPosition.x + wobbleX;
+            leaf.position.z = userData.initialPosition.z + wobbleZ;
+
+            leaf.rotation.x += userData.rotationSpeed.x;
+            leaf.rotation.y += userData.rotationSpeed.y;
+            leaf.rotation.z += userData.rotationSpeed.z;
+
+            const flutter = Math.sin(time * 1.5 + index) * 0.02;
+            leaf.rotation.z += flutter;
+
+            // Reset if fallen too far
+            if (leaf.position.y < -25) {
+                leaf.position.y = 20 + Math.random() * 10;
+                leaf.position.x = (Math.random() - 0.5) * 25;
+                leaf.position.z = (Math.random() - 0.5) * 25;
+                userData.initialPosition = leaf.position.clone();
+
+                userData.fallSpeed = 0.015 + Math.random() * 0.02;
+                userData.wobbleSpeed = 0.3 + Math.random() * 0.4;
+                userData.wobbleAmplitude = 0.15 + Math.random() * 0.2;
+                userData.phase = Math.random() * Math.PI * 2;
+            }
+
+            // Rare wind effect
+            if (Math.random() < 0.0005) {
+                userData.rotationSpeed.y += (Math.random() - 0.5) * 0.005;
+                userData.wobbleAmplitude *= 1.2;
+            }
+
+            userData.wobbleAmplitude *= 0.9995;
+            userData.rotationSpeed.y *= 0.998;
+        });
+    }
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Enhanced floating particle effects for HTML overlay
+function createFloatingParticles() {
+    const particleContainer = document.getElementById('particleOverlay');
+
+    if (!particleContainer) return;
+
+    setInterval(() => {
+        if (Math.random() > 0.3) return;
+
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle enhanced-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        particle.style.animationDuration = (10 + Math.random() * 8) + 's';
+
+        const colors = ['#BDB395', '#A8C686', '#E8E0D0', '#D4C4A0', '#87CEEB', '#DDA0DD'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        particle.style.background = `radial-gradient(circle, ${color}88, ${color}22)`;
+        particle.style.boxShadow = `0 0 20px ${color}66`;
+        particle.style.borderRadius = '50%';
+        particle.style.width = (Math.random() * 8 + 4) + 'px';
+        particle.style.height = particle.style.width;
+
+        particleContainer.appendChild(particle);
+
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.parentNode.removeChild(particle);
+            }
+        }, 18000);
+    }, 1200);
+}
+
+createFloatingParticles();
+
+// Handle window resize
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Dot Navigation System for Scroll Snap Sections
+class DotNavigation {
+    constructor() {
+        this.scrollContainer = document.getElementById('scrollContainer');
+        this.dots = document.querySelectorAll('.dot');
+        this.progressFill = document.querySelector('.progress-fill');
+        this.sections = document.querySelectorAll('.panel');
+        this.currentSection = 1;
+        this.isScrolling = false;
+        
+        this.init();
+    }
+
+    init() {
+        if (!this.scrollContainer || !this.dots.length) {
+            console.warn('Required elements not found');
+            return;
+        }
+
+        this.setupEventListeners();
+        this.updateProgress();
+    }
+
+    setupEventListeners() {
+        // Handle dot clicks
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                this.scrollToSection(index + 1);
+            });
+        });
+
+        // Handle scroll events with throttling
+        let scrollTimeout;
+        this.scrollContainer.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            scrollTimeout = setTimeout(() => {
+                this.handleScroll();
+            }, 50);
+        });
+
+        // Handle keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                this.handleKeyNavigation(e.key);
+            }
+        });
+
+        // Handle wheel events for smoother navigation
+        this.scrollContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            this.handleWheelNavigation(e.deltaY);
+        }, { passive: false });
+    }
+
+    handleScroll() {
+        const scrollTop = this.scrollContainer.scrollTop;
+        const scrollHeight = this.scrollContainer.scrollHeight - this.scrollContainer.clientHeight;
+        const scrollPercent = scrollTop / scrollHeight;
+        
+        // Determine current section based on scroll position
+        const sectionHeight = scrollHeight / (this.sections.length - 1);
+        const newSection = Math.round(scrollPercent * (this.sections.length - 1)) + 1;
+        
+        if (newSection !== this.currentSection) {
+            this.currentSection = Math.max(1, Math.min(this.sections.length, newSection));
+            this.updateActiveDot();
+        }
+        
+        this.updateProgress();
+    }
+
+    handleKeyNavigation(key) {
+        if (this.isScrolling) return;
+        
+        if (key === 'ArrowDown' && this.currentSection < this.sections.length) {
+            this.scrollToSection(this.currentSection + 1);
+        } else if (key === 'ArrowUp' && this.currentSection > 1) {
+            this.scrollToSection(this.currentSection - 1);
+        }
+    }
+
+    handleWheelNavigation(deltaY) {
+        if (this.isScrolling) return;
+        
+        const threshold = 50; // Minimum wheel delta to trigger navigation
+        
+        if (Math.abs(deltaY) > threshold) {
+            if (deltaY > 0 && this.currentSection < this.sections.length) {
+                this.scrollToSection(this.currentSection + 1);
+            } else if (deltaY < 0 && this.currentSection > 1) {
+                this.scrollToSection(this.currentSection - 1);
+            }
+        }
+    }
+
+    scrollToSection(sectionNumber) {
+        if (this.isScrolling || sectionNumber < 1 || sectionNumber > this.sections.length) {
+            return;
+        }
+
+        this.isScrolling = true;
+        this.currentSection = sectionNumber;
+        
+        const targetSection = this.sections[sectionNumber - 1];
+        const scrollTop = targetSection.offsetTop;
+        
+        // Smooth scroll to target section
+        this.smoothScrollTo(scrollTop, 800);
+        
+        this.updateActiveDot();
+        
+        // Reset scrolling flag after animation
+        setTimeout(() => {
+            this.isScrolling = false;
+        }, 900);
+    }
+
+    smoothScrollTo(targetPosition, duration) {
+        const startPosition = this.scrollContainer.scrollTop;
+        const distance = targetPosition - startPosition;
+        const startTime = performance.now();
+
+        const easeInOutCubic = (t) => {
+            return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+        };
+
+        const animateScroll = (currentTime) => {
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const easedProgress = easeInOutCubic(progress);
+            
+            this.scrollContainer.scrollTop = startPosition + distance * easedProgress;
+            
+            if (progress < 1) {
+                requestAnimationFrame(animateScroll);
+            }
+        };
+
+        requestAnimationFrame(animateScroll);
+    }
+
+    updateActiveDot() {
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index + 1 === this.currentSection);
+        });
+    }
+
+    updateProgress() {
+        const progress = ((this.currentSection - 1) / (this.sections.length - 1)) * 100;
+        this.progressFill.style.height = `${progress}%`;
+    }
+
+    // Public method to manually set current section
+    setCurrentSection(sectionNumber) {
+        if (sectionNumber >= 1 && sectionNumber <= this.sections.length) {
+            this.scrollToSection(sectionNumber);
+        }
+    }
+
+    // Public method to get current section
+    getCurrentSection() {
+        return this.currentSection;
+    }
+}
+
+// Enhanced dot navigation with additional features
+class EnhancedDotNavigation extends DotNavigation {
+    constructor() {
+        super();
+        this.setupEnhancedFeatures();
+    }
+
+    setupEnhancedFeatures() {
+        // Add section titles to dots based on data attributes
+        this.dots.forEach((dot, index) => {
+            const section = this.sections[index];
+            const sectionTitle = section?.dataset.section || `Section ${index + 1}`;
+            
+            // Update dot label if it exists
+            const label = dot.querySelector('.dot-label');
+            if (label && section) {
+                // You can customize these labels based on your sections
+                // const labels = ['Home', 'C', 'Experience', 'Explore', 'Connect'];
+                label.textContent = labels[index] || sectionTitle;
+            }
+        });
+
+        // Add intersection observer for more accurate section detection
+        this.setupIntersectionObserver();
+        
+        // Add touch/swipe support for mobile
+        this.setupTouchNavigation();
+    }
+
+    setupIntersectionObserver() {
+        const observerOptions = {
+            root: this.scrollContainer,
+            rootMargin: '-20% 0px -20% 0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionIndex = Array.from(this.sections).indexOf(entry.target);
+                    if (sectionIndex !== -1) {
+                        this.currentSection = sectionIndex + 1;
+                        this.updateActiveDot();
+                        this.updateProgress();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        this.sections.forEach(section => observer.observe(section));
+    }
+
+    setupTouchNavigation() {
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        this.scrollContainer.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        this.scrollContainer.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            this.handleTouchSwipe();
+        }, { passive: true });
+    }
+
+    handleTouchSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartY - touchEndY;
+
+        if (Math.abs(swipeDistance) > swipeThreshold && !this.isScrolling) {
+            if (swipeDistance > 0 && this.currentSection < this.sections.length) {
+                // Swipe up - next section
+                this.scrollToSection(this.currentSection + 1);
+            } else if (swipeDistance < 0 && this.currentSection > 1) {
+                // Swipe down - previous section
+                this.scrollToSection(this.currentSection - 1);
+            }
+        }
+    }
+}
+
+// Initialize the dot navigation system
+document.addEventListener('DOMContentLoaded', () => {
+    // Use EnhancedDotNavigation for full features, or DotNavigation for basic functionality
+    const dotNav = new EnhancedDotNavigation();
+    
+    // Make it globally accessible if needed
+    window.dotNavigation = dotNav;
+    
+    // Optional: Add section change event listener
+    document.addEventListener('sectionChange', (e) => {
+        console.log(`Section changed to: ${e.detail.section}`);
+    });
+});
+
+// CSS Animation helpers (add these to your existing CSS or include them)
+const additionalStyles = `
+    .dot-nav .dot {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dot-nav .dot.active {
+        animation: dotPulse 0.6s ease-out;
+    }
+    
+    @keyframes dotPulse {
+        0% { transform: scale(1.3); }
+        50% { transform: scale(1.5); }
+        100% { transform: scale(1.3); }
+    }
+    
+    .progress-fill {
+        transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Smooth section transitions */
+    .panel {
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+        .dot-nav {
+            right: 10px;
+        }
+        
+        .dot-label {
+            display: none; /* Hide labels on mobile for cleaner look */
+        }
+    }
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+
+
+
+
+
+
+        anime({
+            targets: '.subtle-box',
+            keyframes: [
+                { translateY: 0 },
+                { translateY: -2 },
+                { translateY: 0 }
+            ],
+            duration: 2000,
+            easing: 'easeInOutSine',
+            loop: true,
+            delay: anime.stagger(300)
+        });
+        const reveals = document.querySelectorAll('.reveal');
+
+        const options = {
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Remove if you want only once
+                }
+            });
+        }, options);
+
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
+        const revealSkews = document.querySelectorAll('.reveal-skew-left, .reveal-skew-right');
+
+        const skewObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealSkews.forEach(el => skewObserver.observe(el));
+
+
+
+
+
+
+
+
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const countdown = () => {
+            const deadline = new Date("July 1, 2025 23:59:59").getTime();
+            const now = new Date().getTime();
+            const gap = deadline - now;
+
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+
+            const d = Math.floor(gap / day),
+                h = Math.floor((gap % day) / hour),
+                m = Math.floor((gap % hour) / minute),
+                s = Math.floor((gap % minute) / second);
+
+            document.getElementById("days").textContent = String(d).padStart(2, '0');
+            document.getElementById("hours").textContent = String(h).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(m).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(s).padStart(2, '0');
+        };
+
+        setInterval(countdown, 1000);
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Competition - Entry Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f2f0 0%, #f0e6a6 50%, #c9c2a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f0e6a6, #c9c2a3);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.4)"/><circle cx="70" cy="20" r="1.5" fill="rgba(255,255,255,0.3)"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #4a4237;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #6b5d52;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        /* Authentication Styles */
+        .auth-container {
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .auth-title {
+            font-size: 1.8em;
+            color: #4a4237;
+            margin-bottom: 20px;
+        }
+
+        .auth-subtitle {
+            color: #6b5d52;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .google-signin-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #fff;
+            color: #4a4237;
+            padding: 15px 30px;
+            border: 2px solid #e8e0d3;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .google-signin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border-color: #c9c2a3;
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Payment Portal Styles */
+        .payment-container {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .payment-title {
+            font-size: 2em;
+            color: #4a4237;
+            margin-bottom: 20px;
+        }
+
+        .payment-subtitle {
+            color: #6b5d52;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .payment-amount {
+            background: linear-gradient(135deg, #4a4237, #6b5d52);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .upi-details {
+            background: #f9f7f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .upi-details p {
+            margin: 5px 0;
+            color: #4a4237;
+        }
+
+        .upi-id {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #2c5530;
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
+        .payment-upload {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-upload h3 {
+            color: #4a4237;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .file-upload-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .file-upload {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        .file-upload-label {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0e6a6, #c9c2a3);
+            border: 2px dashed #a69b87;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            color: #4a4237;
+        }
+
+        .file-upload-label:hover {
+            background: linear-gradient(135deg, #c9c2a3, #a69b87);
+            transform: translateY(-2px);
+        }
+
+        .file-upload-text {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f7f4;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #4a4237;
+            display: none;
+        }
+
+        .payment-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #4a4237, #6b5d52);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(74, 66, 55, 0.3);
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 66, 55, 0.4);
+        }
+
+        /* Already Registered Message */
+        .already-registered {
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .already-registered-title {
+            font-size: 2em;
+            color: #4a4237;
+            margin-bottom: 20px;
+        }
+
+        .already-registered-message {
+            color: #6b5d52;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .status-submitted {
+            background: #e8f5e8;
+            color: #2c5530;
+        }
+
+        .status-payment-pending {
+            background: #fef7e0;
+            color: #8b5a00;
+        }
+
+        /* User Info Styles */
+        .user-info {
+            background: #f9f7f4;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #c9c2a3;
+        }
+
+        .user-details h3 {
+            color: #4a4237;
+            margin-bottom: 5px;
+        }
+
+        .user-details p {
+            color: #6b5d52;
+            font-size: 0.9em;
+        }
+
+        .signout-btn {
+            background: none;
+            border: 1px solid #c9c2a3;
+            color: #6b5d52;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: auto;
+            transition: all 0.3s ease;
+        }
+
+        .signout-btn:hover {
+            background: #c9c2a3;
+            color: #fff;
+        }
+
+        /* Form Styles */
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #4a4237;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e8e0d3;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            background: #fefdfb;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #c9c2a3;
+            box-shadow: 0 0 0 3px rgba(201, 194, 163, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .important-note {
+            background: #f9f7f4;
+            border-left: 4px solid #c9c2a3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .important-note p {
+            margin: 0;
+            color: #4a4237;
+            font-style: italic;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #4a4237, #6b5d52);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(74, 66, 55, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 66, 55, 0.4);
+        }
+
+        .category-description {
+            font-size: 0.9em;
+            color: #6b5d52;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b5d52;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e8e0d3;
+            border-top: 4px solid #c9c2a3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .form-container,
+            .auth-container,
+            .payment-container,
+            .already-registered {
+                padding: 30px 20px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .signout-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .qr-code {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 Photography Competition</h1>
+            <p>Capture the world through your lens</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading">
+            <div class="spinner"></div>
+            <p>Initializing...</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-container hidden">
+            <h2 class="auth-title">Welcome to Our Photography Competition</h2>
+            <p class="auth-subtitle">Please sign in with your Google account to participate in the competition. This
+                helps us verify entries and communicate with participants.</p>
+
+            <button id="googleSignInBtn" class="google-signin-btn">
+                <svg class="google-icon" viewBox="0 0 24 24">
+                    <path fill="#4285f4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34a853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#fbbc05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                    <path fill="#ea4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                </svg>
+                Continue with Google
+            </button>
+        </div>
+
+        <!-- Already Registered Section -->
+        <div id="alreadyRegistered" class="already-registered hidden">
+            <!-- User Info Display -->
+            <div id="userInfoRegistered" class="user-info">
+                <img id="userAvatarRegistered" class="user-avatar" src="" alt="User Avatar">
+                <div class="user-details">
+                    <h3 id="userNameRegistered"></h3>
+                    <p id="userEmailRegistered"></p>
+                </div>
+                <button id="signOutBtnRegistered" class="signout-btn">Sign Out</button>
+            </div>
+
+            <h2 class="already-registered-title">🎉 Already Registered!</h2>
+            <div id="registrationStatus" class="status-badge"></div>
+            <p class="already-registered-message">You have already submitted your entry for this photography competition. Thank you for your participation!</p>
+            <div id="registrationDetails"></div>
+        </div>
+
+        <!-- Payment Portal Section -->
+        <div id="paymentSection" class="payment-container hidden">
+            <!-- User Info Display -->
+            <div id="userInfoPayment" class="user-info">
+                <img id="userAvatarPayment" class="user-avatar" src="" alt="User Avatar">
+                <div class="user-details">
+                    <h3 id="userNamePayment"></h3>
+                    <p id="userEmailPayment"></p>
+                </div>
+                <button id="signOutBtnPayment" class="signout-btn">Sign Out</button>
+            </div>
+
+            <h2 class="payment-title">💳 Registration Fee</h2>
+            <p class="payment-subtitle">Complete your registration by paying the competition fee</p>
+            
+            <div class="payment-amount">
+                Registration Fee: ₹50
+            </div>
+
+            <div class="qr-container">
+                <div class="qr-code">
+                    <!-- Replace this with actual QR code image -->
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 10px;">📱</div>
+                        <div>Scan QR Code to Pay</div>
+                        <div style="font-size: 0.8em; margin-top: 5px; color: #999;">QR Code will be displayed here</div>
+                    </div>
+                </div>
+                
+                <div class="upi-details">
+                    <p><strong>UPI Payment Details:</strong></p>
+                    <div class="upi-id">your-upi-id@paytm</div>
+                    <p><strong>Amount:</strong> ₹50</p>
+                    <p><strong>Note:</strong> Photography Competition Registration</p>
+                </div>
+            </div>
+
+            <div class="payment-upload">
+                <h3>📸 Upload Payment Screenshot</h3>
+                <p style="color: #6b5d52; margin-bottom: 15px;">After making the payment, please upload a screenshot as proof</p>
+                
+                <div class="file-upload-container">
+                    <input type="file" id="paymentScreenshot" name="paymentScreenshot" class="file-upload" accept="image/*" required>
+                    <label for="paymentScreenshot" class="file-upload-label">
+                        📁 Upload Payment Screenshot
+                        <span class="file-upload-text">Click to browse or drag and drop your screenshot</span>
+                    </label>
+                </div>
+                <div class="file-name" id="paymentFileName"></div>
+
+                <button id="proceedToFormBtn" class="payment-btn">Proceed to Competition Form</button>
+            </div>
+        </div>
+
+        <!-- Competition Form -->
+        <div id="competitionForm" class="form-container hidden">
+            <!-- User Info Display -->
+            <div id="userInfo" class="user-info">
+                <img id="userAvatar" class="user-avatar" src="" alt="User Avatar">
+                <div class="user-details">
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+                <button id="signOutBtn" class="signout-btn">Sign Out</button>
+            </div>
+
+            <form id="entryForm">
+                <div class="form-group">
+                    <label for="participantName">Participant Name *</label>
+                    <input type="text" id="participantName" name="participantName" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Instagram ID *</label>
+                    <input type="text" id="instagram" name="instagram" placeholder="@your_instagram_handle" required>
+                </div>
+
+                <div class="important-note">
+                    <p><strong>📌 Important:</strong> Following our Instagram page is mandatory for entry validation.
+                        Make sure you're following us before submitting your entry!</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Competition Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="the-unnoticed">The Unnoticed</option>
+                        <option value="rhythm-daily-life">The Rhythm of Daily Life</option>
+                    </select>
+                    <div class="category-description" id="categoryDesc"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="photoTitle">Photo Title *</label>
+                    <input type="text" id="photoTitle" name="photoTitle"
+                        placeholder="Give your photo a compelling title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Your Photo *</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="photoUpload" name="photoUpload" class="file-upload" accept="image/*"
+                            required>
+                        <label for="photoUpload" class="file-upload-label">
+                            📁 Choose Photo
+                            <span class="file-upload-text">Click to browse or drag and drop your image</span>
+                        </label>
+                    </div>
+                    <div class="file-name" id="fileName"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Photo Description (Optional)</label>
+                    <input type="text" id="description" name="description"
+                        placeholder="Brief description of your photograph">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-database-compat.min.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD-dP6U2yatCIjBF4RfOoIxQBasFLlKGI",
+            authDomain: "innerframe-7fbbf.firebaseapp.com",
+            databaseURL: "https://innerframe-7fbbf-default-rtdb.firebaseio.com",
+            projectId: "innerframe-7fbbf",
+            storageBucket: "innerframe-7fbbf.firebasestorage.app",
+            messagingSenderId: "1073895900093",
+            appId: "1:1073895900093:web:0561d4d201bd2d35f508d4"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        // Google Auth Provider
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('email');
+        provider.addScope('profile');
+
+        // DOM Elements
+        const loadingState = document.getElementById('loadingState');
+        const authSection = document.getElementById('authSection');
+        const paymentSection = document.getElementById('paymentSection');
+        const competitionForm = document.getElementById('competitionForm');
+        const alreadyRegistered = document.getElementById('alreadyRegistered');
+        const googleSignInBtn = document.getElementById('googleSignInBtn');
+        const proceedToFormBtn = document.getElementById('proceedToFormBtn');
+        const entryForm = document.getElementById('entryForm');
+
+        // Sign out buttons
+        const signOutBtn = document.getElementById('signOutBtn');
+        const signOutBtnPayment = document.getElementById('signOutBtnPayment');
+        const signOutBtnRegistered = document.getElementById('signOutBtnRegistered');
+
+        // User info elements for different sections
+        const userInfos = {
+            payment: {
+                container: document.getElementById('userInfoPayment'),
+                avatar: document.getElementById('userAvatarPayment'),
+                name: document.getElementById('userNamePayment'),
+                email: document.getElementById('userEmailPayment')
+            },
+            form: {
+                container: document.getElementById('userInfo'),
+                avatar: document.getElementById('userAvatar'),
+                name: document.getElementById('userName'),
+                email: document.getElementById('userEmail')
+            },
+            registered: {
+                container: document.getElementById('userInfoRegistered'),
+                avatar: document.getElementById('userAvatarRegistered'),
+                name: document.getElementById('userNameRegistered'),
+                email: document.getElementById('userEmailRegistered')
+            }
+        };
+
+        // Form elements
+        const participantName = document.getElementById('participantName');
+        const emailField = document.getElementById('email');
+
+        // Category descriptions
+        const categoryDescriptions = {
+            'the-unnoticed': 'Capture the beauty in overlooked moments, hidden details, and everyday scenes that often go unnoticed.',
+            'rhythm-daily-life': 'Document the patterns, routines, and flowing moments that create the rhythm of our daily existence.'
+        };
+
+        // Utility function to convert file to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Utility function to compress image
+        function compressImage(file, maxWidth = 1920, quality = 0.8) {
+            return new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+
+                img.onload = () => {
+                    // Calculate new dimensions
+                    let { width, height } = img;
+
+                    if (width > maxWidth) {
+                        height = (height * maxWidth) / width;
+                        width = maxWidth;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    // Draw and compress
+                    ctx.drawImage(img, 0, 0, width, height);
+                    canvas.toBlob(resolve, 'image/jpeg', quality);
+                };
+
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        // Function to populate user info in different sections
+        function populateUserInfo(user, section) {
+            const info = userInfos[section];
+            info.avatar.src = user.photoURL || 'https://via.placeholder.com/50';
+            info.name.textContent = user.displayName || 'User';
+            info.email.textContent = user.email;
+        }
+
+        // Function to hide all sections
+        function hideAllSections() {
+            authSection.classList.add('hidden');
+            paymentSection.classList.add('hidden');
+            competitionForm.classList.add('hidden');
+            alreadyRegistered.classList.add('hidden');
+        }
+
+        // Function to check if user is already registered
+        async function checkUserRegistration(userId) {
+            try {
+                const snapshot = await database.ref('user-entries').child(userId).once('value');
+                const entries = snapshot.val();
+                return entries ? Object.keys(entries).length > 0 : false;
+            } catch (error) {
+                console.error('Error checking user registration:', error);
+                return false;
+            }
+        }
+
+        // Function to get user registration
+
+        // Function to get user registration details
+        async function getUserRegistrationDetails(userId) {
+            try {
+                const snapshot = await database.ref('user-entries').child(userId).once('value');
+                const entries = snapshot.val();
+                return entries;
+            } catch (error) {
+                console.error('Error getting user registration details:', error);
+                return null;
+            }
+        }
+
+        // Function to display registration details
+        function displayRegistrationDetails(entries) {
+            const registrationDetails = document.getElementById('registrationDetails');
+            const registrationStatus = document.getElementById('registrationStatus');
+            
+            if (entries) {
+                const entryKeys = Object.keys(entries);
+                const latestEntry = entries[entryKeys[0]]; // Get the first (and should be only) entry
+                
+                if (latestEntry.paymentVerified) {
+                    registrationStatus.textContent = 'Registration Complete ✅';
+                    registrationStatus.className = 'status-badge status-submitted';
+                } else {
+                    registrationStatus.textContent = 'Payment Pending ⏳';
+                    registrationStatus.className = 'status-badge status-payment-pending';
+                }
+
+                registrationDetails.innerHTML = `
+                    <div style="background: #f9f7f4; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: left;">
+                        <h4 style="color: #4a4237; margin-bottom: 15px;">Your Registration Details:</h4>
+                        <p><strong>Category:</strong> ${latestEntry.category}</p>
+                        <p><strong>Photo Title:</strong> ${latestEntry.photoTitle}</p>
+                        <p><strong>Instagram ID:</strong> ${latestEntry.instagram}</p>
+                        <p><strong>Phone:</strong> ${latestEntry.phone}</p>
+                        <p><strong>Submitted:</strong> ${new Date(latestEntry.timestamp).toLocaleDateString()}</p>
+                        ${latestEntry.description ? `<p><strong>Description:</strong> ${latestEntry.description}</p>` : ''}
+                    </div>
+                `;
+            }
+        }
+
+        // Authentication state observer
+        auth.onAuthStateChanged(async (user) => {
+            loadingState.classList.add('hidden');
+
+            if (user) {
+                console.log('User signed in:', user.email);
+                populateUserInfo(user, 'payment');
+                populateUserInfo(user, 'form');
+                populateUserInfo(user, 'registered');
+                
+                // Pre-fill form fields
+                participantName.value = user.displayName || '';
+                emailField.value = user.email || '';
+
+                // Check if user is already registered
+                const isRegistered = await checkUserRegistration(user.uid);
+                
+                if (isRegistered) {
+                    // User already registered - show registration details
+                    hideAllSections();
+                    const registrationDetails = await getUserRegistrationDetails(user.uid);
+                    displayRegistrationDetails(registrationDetails);
+                    alreadyRegistered.classList.remove('hidden');
+                } else {
+                    // New user - show payment portal first
+                    hideAllSections();
+                    paymentSection.classList.remove('hidden');
+                }
+            } else {
+                console.log('User signed out');
+                hideAllSections();
+                authSection.classList.remove('hidden');
+            }
+        });
+
+        // Google Sign In
+        googleSignInBtn.addEventListener('click', async () => {
+            try {
+                googleSignInBtn.disabled = true;
+                googleSignInBtn.innerHTML = '<div class="spinner" style="width: 20px; height: 20px; margin: 0;"></div> Signing in...';
+                
+                await auth.signInWithPopup(provider);
+            } catch (error) {
+                console.error('Sign in failed:', error);
+                alert('Sign in failed. Please try again.');
+                googleSignInBtn.disabled = false;
+                googleSignInBtn.innerHTML = `
+                    <svg class="google-icon" viewBox="0 0 24 24">
+                        <path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Continue with Google
+                `;
+            }
+        });
+
+        // Payment screenshot upload handler
+        document.getElementById('paymentScreenshot').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileName = document.getElementById('paymentFileName');
+            
+            if (file) {
+                fileName.textContent = `Selected: ${file.name}`;
+                fileName.style.display = 'block';
+                proceedToFormBtn.disabled = false;
+            } else {
+                fileName.style.display = 'none';
+                proceedToFormBtn.disabled = true;
+            }
+        });
+
+        // Proceed to form after payment
+        proceedToFormBtn.addEventListener('click', async () => {
+            const paymentScreenshot = document.getElementById('paymentScreenshot');
+            
+            if (!paymentScreenshot.files[0]) {
+                alert('Please upload a payment screenshot first.');
+                return;
+            }
+
+            try {
+                proceedToFormBtn.disabled = true;
+                proceedToFormBtn.innerHTML = '<div class="spinner" style="width: 20px; height: 20px; margin: 0;"></div> Processing...';
+
+                // Here you can upload the payment screenshot to Firebase Storage if needed
+                // For now, we'll just proceed to the form
+
+                hideAllSections();
+                competitionForm.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error processing payment:', error);
+                alert('Error processing payment screenshot. Please try again.');
+            } finally {
+                proceedToFormBtn.disabled = false;
+                proceedToFormBtn.innerHTML = 'Proceed to Competition Form';
+            }
+        });
+
+        // Sign out handlers
+        function setupSignOutHandler(button) {
+            button.addEventListener('click', () => {
+                auth.signOut();
+            });
+        }
+
+        setupSignOutHandler(signOutBtn);
+        setupSignOutHandler(signOutBtnPayment);
+        setupSignOutHandler(signOutBtnRegistered);
+
+        // File upload handlers
+        document.getElementById('photoUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileName = document.getElementById('fileName');
+            
+            if (file) {
+                fileName.textContent = `Selected: ${file.name}`;
+                fileName.style.display = 'block';
+            } else {
+                fileName.style.display = 'none';
+            }
+        });
+
+        // Category change handler
+        document.getElementById('category').addEventListener('change', function(e) {
+            const categoryDesc = document.getElementById('categoryDesc');
+            const selectedCategory = e.target.value;
+            
+            if (selectedCategory && categoryDescriptions[selectedCategory]) {
+                categoryDesc.textContent = categoryDescriptions[selectedCategory];
+            } else {
+                categoryDesc.textContent = '';
+            }
+        });
+
+        // Form submission
+        entryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in first.');
+                return;
+            }
+
+            // Check again if user is already registered (safety check)
+            const isAlreadyRegistered = await checkUserRegistration(user.uid);
+            if (isAlreadyRegistered) {
+                alert('You have already submitted an entry for this competition.');
+                hideAllSections();
+                const registrationDetails = await getUserRegistrationDetails(user.uid);
+                displayRegistrationDetails(registrationDetails);
+                alreadyRegistered.classList.remove('hidden');
+                return;
+            }
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="spinner" style="width: 20px; height: 20px; margin: 0;"></div> Submitting...';
+
+            try {
+                // Get form data
+                const formData = new FormData(entryForm);
+                const photoFile = document.getElementById('photoUpload').files[0];
+                const paymentScreenshot = document.getElementById('paymentScreenshot').files[0];
+
+                if (!photoFile) {
+                    throw new Error('Please select a photo to upload.');
+                }
+
+                if (!paymentScreenshot) {
+                    throw new Error('Payment screenshot is required.');
+                }
+
+                // Compress and convert photo to base64
+                const compressedPhoto = await compressImage(photoFile);
+                const photoBase64 = await fileToBase64(compressedPhoto);
+                
+                // Convert payment screenshot to base64
+                const paymentBase64 = await fileToBase64(paymentScreenshot);
+
+                // Prepare entry data
+                const entryData = {
+                    participantName: formData.get('participantName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    instagram: formData.get('instagram'),
+                    category: formData.get('category'),
+                    photoTitle: formData.get('photoTitle'),
+                    description: formData.get('description') || '',
+                    photoData: photoBase64,
+                    paymentScreenshot: paymentBase64,
+                    timestamp: Date.now(),
+                    userId: user.uid,
+                    userDisplayName: user.displayName,
+                    userEmail: user.email,
+                    userPhotoURL: user.photoURL,
+                    paymentVerified: false, // Will be verified manually
+                    submissionId: `${user.uid}_${Date.now()}`
+                };
+
+                // Save to Firebase
+                const entryRef = database.ref('user-entries').child(user.uid).push();
+                await entryRef.set(entryData);
+
+                // Also save to a general entries collection for admin access
+                await database.ref('competition-entries').child(entryRef.key).set(entryData);
+
+                alert('Entry submitted successfully! We will verify your payment and contact you soon.');
+                
+                // Redirect to already registered section
+                hideAllSections();
+                const registrationDetails = await getUserRegistrationDetails(user.uid);
+                displayRegistrationDetails(registrationDetails);
+                alreadyRegistered.classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert(`Submission failed: ${error.message}`);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Entry';
+            }
+        });
+
+        // Initialize loading state
+        loadingState.classList.remove('hidden');
+    </script>
+</body>
+</html>

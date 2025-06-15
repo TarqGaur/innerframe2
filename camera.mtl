@@ -1,0 +1,16 @@
+
+
+newmtl cameraBody_Mat
+
+illum 4
+Kd 0.08 0.08 0.08
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl cameraLens_Mat
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 0.10 0.10 0.10
+Ni 1.62
