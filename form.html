@@ -572,18 +572,18 @@
             </div>
 
             <div class="qr-container">
-                <div class="qr-code">
-                    <!-- Replace this with actual QR code image -->
-                    <div style="text-align: center;">
-                        <div style="font-size: 60px; margin-bottom: 10px;">📱</div>
+                <img class="qr-code" src="qr.jpeg" style="            filter: grayscale(100%) contrast(250%) brightness(110%);
+">
+                        <!-- <img style="transform: scale(0.5);" src="qr.jpeg"> -->
+                    <!-- <div style="text-align: center;">
                         <div>Scan QR Code to Pay</div>
-                        <div style="font-size: 0.8em; margin-top: 5px; color: #999;">QR Code will be displayed here</div>
-                    </div>
-                </div>
+                        <img style="font-size: 0.8em; margin-top: 5px; color: #999;" src="qr.jpeg">
+                    </div> -->
+                <!-- </div> -->
                 
                 <div class="upi-details">
                     <p><strong>UPI Payment Details:</strong></p>
-                    <div class="upi-id">your-upi-id@paytm</div>
+                    <div class="upi-id">7081569808@fam</div>
                     <p><strong>Amount:</strong> ₹50</p>
                     <p><strong>Note:</strong> Photography Competition Registration</p>
                 </div>
@@ -674,9 +674,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Photo Description (Optional)</label>
+                    <label for="description">Photo Description</label>
                     <input type="text" id="description" name="description"
-                        placeholder="Brief description of your photograph">
+                        placeholder="Brief description of your photograph" required>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Entry</button>
